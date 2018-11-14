@@ -12,10 +12,10 @@ class Count:
         def increment(index = 0):
             limit = self.base - 1
             if len(self.stigid) == index:
-                self.stigid = [0 for i in range(index)]
+                self.stigid = [0]*index
                 self.stigid.append(1)
             elif self.stigid[index] < limit:
-                self.stigid = [0 for i in range(index)] + self.stigid[index:]
+                self.stigid = [0]*index + self.stigid[index:]
                 self.stigid[index] += 1
             elif self.stigid[index] == limit:
                 increment(index + 1)
