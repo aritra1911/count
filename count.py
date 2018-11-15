@@ -1,7 +1,6 @@
 class Count:
     def __init__(self, base = 10):
         self.base = base if base > 1 else 10
-        self.digits = [0]
         self.stigid = list() # Stores as OTH...
 
     def count(self):
@@ -21,11 +20,11 @@ class Count:
                 increment(index + 1)
 
         increment()
-        self.digits = self.stigid[::-1] # invert and store
-        return self.get_digits()
+        return self.stigid[::-1] # invert and return
 
     def get_digits(self):
         """
         Returns existing list of digits
         """
-        return self.digits
+        l = self.stigid[::-1]
+        return [0] if len(l) < 1 else l
