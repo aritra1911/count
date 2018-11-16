@@ -3,6 +3,19 @@ class Count:
         self.base = base if base > 1 else 10
         self.stigid = list() # Stores as OTH...
 
+    def set_base(self, base):
+        """
+        WARNING: Resets counter list
+        """
+        self.base = base if base > 1 else 10
+        self.reset()
+
+    def feed_zeroes(self, n):
+        """
+        Resets and loads n number of zeroes into counting list
+        """
+        self.stigid = [0] * n
+
     def count(self):
         """
         Adds 1 (arithmetically) to existing
@@ -26,5 +39,10 @@ class Count:
         """
         Returns existing list of digits
         """
-        l = self.stigid[::-1]
-        return [0] if len(l) < 1 else l
+        return self.stigid[::-1]
+
+    def reset(self):
+        """
+        Resets counting list to 0
+        """
+        self.stigit = list()
