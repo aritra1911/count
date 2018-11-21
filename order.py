@@ -12,10 +12,15 @@ class Order:
         self.word = list(word)
 
     def get_word(self):
-        return str(self.word)
+        return ''.join(self.word)
 
     def sort_word(self, desc = False):
-        pass # apply your favorite sorting algorithm to sort self.word list
+        swappable = lambda a, b: a > b if desc else a < b
+        # Bubble sort
+        for j in range(len(self.word)):
+            for i in range(j + 1, len(self.word)):
+                if swappable(self.word[i], self.word[j]):
+                    self.word[i], self.word[j] = self.word[j], self.word[i]
 
     def refresh(self):
         pass # Implemented in subclasses

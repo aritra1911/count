@@ -10,11 +10,7 @@ class Permutation(Order):
         self.size = self.fact(length) * length
 
     def generate_words(self):
-        def is_distinct(digits):
-            if len(digits) > len(set(digits)):
-                return False
-            return True
-
+        is_distinct = lambda digits: not (len(digits) > len(set(digits)))
         c = Count(len(self.word))
         c.feed_zeroes(len(self.word))
         digits = c.get_digits()
