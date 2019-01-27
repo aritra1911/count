@@ -45,4 +45,4 @@ class Count:
         """
         Resets counting list to 0
         """
-        self.stigit = list()
+        self.stigid = list()
