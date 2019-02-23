@@ -1,16 +1,19 @@
 from count import Count
 from order import Order
 
+
 class Permutation(Order):
     def fact(self, n):
-            return 1 if n <= 1 else n*self.fact(n - 1)
+        return 1 if n <= 1 else n*self.fact(n - 1)
 
     def refresh(self):
         length = len(self.word)
         self.size = self.fact(length) * length
 
     def generate_words(self):
-        is_distinct = lambda digits: not (len(digits) > len(set(digits)))
+        def is_distinct(digits):
+            return not len(digits) > len(set(digits))
+
         c = Count(len(self.word))
         c.feed_zeroes(len(self.word))
         digits = c.get_digits()

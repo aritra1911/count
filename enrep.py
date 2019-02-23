@@ -2,19 +2,20 @@ from count import Count
 from order import Order
 
 FIXED_LENGTH = False
-UPTO_LENGTH  = True
+UPTO_LENGTH = True
+
 
 class Enrep(Order):
-    def __init__(self, word = '', length = None, mode = UPTO_LENGTH):
+    def __init__(self, word='', length=None, mode=UPTO_LENGTH):
         length = int(length if length is not None else len(word))
         self.length = length
         self.set_mode(mode)
         super().__init__(word)
 
-    def set_length():
+    def set_length(self, length):
         self.length = length if length is not None else len(self.word)
 
-    def get_length():
+    def get_length(self):
         return self.length
 
     def set_mode(self, mode):
