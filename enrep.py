@@ -11,6 +11,7 @@ class Enrep(Order):
         self.length = length
         self.set_mode(mode)
         super().__init__(word)
+        self.refresh()
 
     def set_length(self, length):
         self.length = length if length is not None else len(self.word)
@@ -39,11 +40,11 @@ class Enrep(Order):
                 l = c.get_digits()
                 for j in range(len(self.word)**i):
                     self.words.append([self.word[k] for k in l])
-                    l = c.count()
+                    l = c.increment_by(1)
         else:
             c.feed_zeroes(self.length)
             l = c.get_digits()
             for i in range(len(self.word)**self.length):
                 self.words.append([self.word[k] for k in l])
-                l = c.count()
+                l = c.increment_by(1)
         return self.words
