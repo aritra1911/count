@@ -18,6 +18,11 @@ def permutation_main():
     for i in permut.generate_words():
         print(i)
 
+def count_main():
+    k = Count(10)
+    k.set_number([1, 9, 2])
+    print(k.decrement_by(72))
+
 
 if __name__ == '__main__':
     args = sys.argv[1:]
@@ -32,3 +37,6 @@ if __name__ == '__main__':
 
     elif args[0] == "permutation":
         permutation_main()
+
+    elif args[0] == "count":
+        count_main()
