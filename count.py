@@ -32,7 +32,8 @@ class Count:
         return self.increment_by(incr_value // self.base, index+1)
 
     def decrement_by(self, value, index=0):
-        # TODO: NEEDS SO MUCH MORE...
+        # TODO: Truncate meaningless zeroes at the start
+        #       Also, think about refactoring entirely
 
         if value == 0:
             return self.stigid[::-1]
@@ -40,9 +41,19 @@ class Count:
         place_value = self.stigid[index]
         decr_value = value % self.base
 
-        if place_value < decr_value and (index + 1) < len(self.stigid):
-            self.stigid[index] = place_value*self.base + 1
-            self.stigid[index+1] -= 1
+        if place_value < decr_value:
+            i = 1
+            while (index + i) < len(self.stigid):
+                if self.stigid[index+i] > 0:
+                    self.stigid[index] = place_value + self.base
+                    self.stigid[index + i] -= 1
+                    # if index + i+1 == len(self.stigid) and \
+                    # self.stigid[index + i] == 0:
+                    #     self.stigid = self.stigid[1:]
+                    break
+                elif self.stigid[index + i + 1] > 0:
+                    self.stigid[index + i] = self.base - 1
+                i += 1
 
         self.stigid[index] -= decr_value
         return self.decrement_by(value // self.base, index+1)

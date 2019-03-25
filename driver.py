@@ -20,9 +20,21 @@ def permutation_main():
 
 def count_main():
     k = Count(10)
-    k.set_number([1, 9, 2])
-    print(k.decrement_by(72))
 
+    def increment():
+        k.set_number([0])
+        print(k.get_digits())
+        for i in range(10):
+            print(k.increment_by(5))
+
+    def decrement():
+        k.set_number([5, 0])
+        print(k.get_digits())
+        for i in range(10):
+            print(k.decrement_by(5))
+
+    # increment()
+    decrement()
 
 if __name__ == '__main__':
     args = sys.argv[1:]
