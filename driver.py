@@ -19,19 +19,19 @@ def permutation_main():
         print(i)
 
 def count_main():
-    k = Count(10)
+    k = Count(18)
 
     def increment():
-        k.set_number([0])
+        k.set_number([12])
         print(k.get_digits())
-        for i in range(10):
-            print(k.increment_by(5))
+        for i in range(15):
+            print(k.increment_by(134))
 
     def decrement():
-        k.set_number([5, 0])
+        k.set_number([6, 4, 6])
         print(k.get_digits())
-        for i in range(10):
-            print(k.decrement_by(5))
+        for i in range(15):
+            print(k.decrement_by(134))
 
     # increment()
     decrement()

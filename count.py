@@ -4,7 +4,7 @@ class Count:
         self.stigid = list()  # Stores as OTH...
         self.sign = False
 
-    def is_signed():
+    def is_signed(self):
         return self.sign
 
     def set_base(self, base):
@@ -32,31 +32,22 @@ class Count:
         return self.increment_by(incr_value // self.base, index+1)
 
     def decrement_by(self, value, index=0):
-        # TODO: Truncate meaningless zeroes at the start
-        #       Also, think about refactoring entirely
+        decr_value = value % self.base
+        self.stigid[index] -= decr_value
+        has_borrowed = 0
 
-        if value == 0:
+        if self.stigid[index] < 0:
+            self.stigid[index] += self.base
+            has_borrowed = 1
+
+        if index == len(self.stigid) - 1:
+            while self.stigid and not self.stigid[-1]:
+                self.stigid.pop()
             return self.stigid[::-1]
 
-        place_value = self.stigid[index]
-        decr_value = value % self.base
+        next_sub = (value // self.base) + has_borrowed
+        return self.decrement_by(next_sub, index + 1)
 
-        if place_value < decr_value:
-            i = 1
-            while (index + i) < len(self.stigid):
-                if self.stigid[index+i] > 0:
-                    self.stigid[index] = place_value + self.base
-                    self.stigid[index + i] -= 1
-                    # if index + i+1 == len(self.stigid) and \
-                    # self.stigid[index + i] == 0:
-                    #     self.stigid = self.stigid[1:]
-                    break
-                elif self.stigid[index + i + 1] > 0:
-                    self.stigid[index + i] = self.base - 1
-                i += 1
-
-        self.stigid[index] -= decr_value
-        return self.decrement_by(value // self.base, index+1)
 
     def get_digits(self):
         return self.stigid[::-1]
