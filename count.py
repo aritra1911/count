@@ -1,6 +1,6 @@
 class Count:
     def __init__(self, base=10):
-        self.base = base if base > 1 else 10
+        self.set_base(base)
         self.stigid = list()  # Stores as OTH...
         self.sign = False
 
